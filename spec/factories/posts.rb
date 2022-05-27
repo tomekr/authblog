@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :post do
-    title { "MyString" }
-    content { "MyText" }
+    title { "A Post Title" }
+    content { "Sample post content" }
+    user
+
+    after(:create) { |post| post.user.add_role :author, post }
   end
 end
